@@ -34,7 +34,7 @@ dependencias-y-servicio(){
         npm audit fix && echo "Vulnerabilidades corregidas" >> /root/logs/informe_react.log
         npm audit fix --force && echo "Vulnerabilidades graves corregidas" >> /root/logs/informe_react.log
         # Inciar el servidor de desarrollo de React
-        npm run start -- --host 0.0.0.0 --port 3000 && echo "Servidor React iniciado" >> /root/logs/informe_react.log
+        npm start -- --host 0.0.0.0 --port 3000 && echo "Servidor React iniciado" >> /root/logs/informe_react.log
     else
         echo "ERROR: package.json no encontrado" >> /root/logs/informe_react.log
         exit 1
