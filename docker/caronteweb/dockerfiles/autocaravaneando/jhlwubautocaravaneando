@@ -10,7 +10,7 @@ RUN mkdir -p /root/admin/node/proyectos/autocaravaneando
 WORKDIR /root/admin/node
 COPY ./proyectos/autocaravaneando/src/www/ /root/admin/node/proyectos/autocaravaneando/
 
-COPY ./dockerfiles/node/admin/jhlwstart.sh .
+COPY ./dockerfiles/autocaravaneando/admin/jhlwstart.sh .
 RUN chmod +x /root/admin/node/jhlwstart.sh
 
 ENTRYPOINT [ "./jhlwstart.sh" ]
