@@ -6,7 +6,7 @@ load_entrypoint_nginx(){
     echo "Cargando entrypoint Nginx..." >> /root/logs/informe_react.log
     
     if [ -f /root/admin/sweb/nginx/jhlwstart.sh ]; then
-        bash /root/admin/sweb/nginx/admin/jhlwstart.sh
+        bash /root/admin/nginx/jhlwstart.sh
         echo "Entrypoint Nginx ejecutado" >> /root/logs/informe_react.log
     else
         echo "ADVERTENCIA: start.sh de Nginx no encontrado" >> /root/logs/informe_react.log
@@ -37,6 +37,41 @@ dependencias-y-servicio(){
         echo "ERROR: package.json no encontrado" >> /root/logs/informe_react.log
         exit 1
     fi
+}
+
+contruir_y_copiar(){
+    
+    # Construir proyecto
+    if npm run build; then
+        echo "Proyecto construido" >> /root/logs/informe_react.log
+    else
+        echo "ERROR: Falló npm run build" >> /root/logs/informe_react.log
+        exit 1
+    fi
+
+    # Copiar a /var/www/html
+    if [ -d dist ]; then
+        cp -r dist/* /var/www/html/
+        echo "Archivos copiados a /var/www/html" >> /root/logs/informe_react.log
+    else
+        echo "ERROR: Directorio dist no encontrado" >> /root/logs/informe_react.log
+        exit 1
+    fi
+}
+
+cargar_nginx(){
+    echo "Configurando Nginx..." >> /root/logs/informe_react.log
+    # Verificar configuración de Nginx
+    if nginx -t; then
+        echo "Configuración Nginx OK" >> /root/logs/informe_react.log
+    else
+        echo "ERROR: Configuración Nginx inválida" >> /root/logs/informe_react.log
+        exit 1
+    fi
+    
+    # Iniciar Nginx
+    nginx -g 'daemon off;'
+    echo "Nginx iniciado" >> /root/logs/informe_react.log
 }
 
 main(){
