@@ -5,6 +5,4 @@ WORKDIR /root/admin/autocaravaneando
 COPY ./dockerfiles/autocaravaneandoNGINX/admin/jhlwstart.sh .
 RUN chmod +x ./jhlwstart.sh
 
-EXPOSE 3000 80
-
 ENTRYPOINT ["./jhlwstart.sh"]
