@@ -1,7 +1,7 @@
 FROM jiahaolin/nginx
 
 RUN apt-get update && apt-get install -y curl gnupg software-properties-common
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
 RUN apt-get install -y nodejs
 RUN node --version && npm --version
 
@@ -9,7 +9,8 @@ RUN mkdir -p /root/admin/node
 RUN mkdir -p /root/admin/node/proyectos/autocaravaneando
 WORKDIR /root/admin/node
 COPY ./proyectos/autocaravaneando/src/www/ /root/admin/node/proyectos/autocaravaneando/
-COPY ./dockerfiles/autocaravaneando/admin/jhlwstart.sh .
+
+COPY ./dockerfiles/node/admin/jhlwstart.sh .
 RUN chmod +x /root/admin/node/jhlwstart.sh
 
 ENTRYPOINT [ "./jhlwstart.sh" ]
