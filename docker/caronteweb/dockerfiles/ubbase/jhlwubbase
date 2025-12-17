@@ -14,6 +14,6 @@ WORKDIR /root/admin/base
 COPY ./dockerfiles/ubbase/admin/ .
 
 COPY ./common/id_rsa.pub ./common/id_rsa.pub
-RUN chmod +x ./start.sh
+RUN chmod +x ./${INICIALES}start.sh
 
-ENTRYPOINT [ "./"$INICIALES"start.sh" ]
+ENTRYPOINT [ "./${INICIALES}start.sh" ]
