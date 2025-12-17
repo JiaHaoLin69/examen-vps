@@ -6,7 +6,7 @@ RUN apt update && apt install -y --no-install-recommends \
     sudo \
     openssh-server 
 
-RUN mkdir /root/admin/base
+RUN mkdir -p /root/admin/base
 WORKDIR /root/admin/base
 COPY ./dockerfiles/ubbase/admin/ .
 
