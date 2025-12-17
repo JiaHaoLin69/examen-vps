@@ -8,7 +8,7 @@ services:
     container_name: ${CONTENEDOR}
     image: ${FIRMA}/nginx
     ports:
-      - 8080:80
+      - 6969:80
     env_file:
       - ./.env
     volumes:

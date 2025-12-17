@@ -15,10 +15,10 @@ services:
     volumes:
       - ./logs:/root/logs
     networks:
-      pnginx_network:
+      pnautocaravaneando:
         ipv4_address: ${IP_WEB}
 networks:
-  pnginx_network:
+  pnautocaravaneando:
     driver: bridge
     ipam:
       config:
