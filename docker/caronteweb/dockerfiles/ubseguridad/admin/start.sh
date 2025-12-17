@@ -6,7 +6,7 @@ load_entrypoint_base(){
 
 jambload_ciber(){
     LOG_DIR="/root/logs"
-    LOG_FILE="$LOG_DIR/ctjhlwautocaravaneando_ports.log"
+    LOG_FILE="/root/logs/ctjhlwautocaravaneando_ports.log"
     
     echo "=== PORT AUDITORIO ===" >> "$LOG_FILE"
     echo "Container: ${CONTENEDOR}" >> "$LOG_FILE"
