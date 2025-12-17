@@ -17,6 +17,7 @@ main (){
     if [ "$resuser" -eq 0 ]; then
         configurar_ssh
     fi
+    tail -f /dev/null
 }
 
 main
