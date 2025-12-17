@@ -2,7 +2,7 @@ services:
   web:
     build:
       context: ${CONTEXTO}
-      dockerfile: ./dockerfiles/ubserguridad/dockerfile
+      dockerfile: ./dockerfiles/ubseguridad/dockerfile
     container_name: ${CONTENEDOR}
     image: ${FIRMA}/ubseguridad
     ports:
