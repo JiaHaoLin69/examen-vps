@@ -4,9 +4,9 @@ load_entrypoint_base(){
     bash /root/admin/base/start.sh 
 }
 
-jambload_ciber(){
+jhlwload_ciber(){
     LOG_DIR="/root/logs"
-    LOG_FILE="/root/logs/ctjhlwautocaravaneando_ports.log"
+    LOG_FILE="$LOG_DIR/ctjhlwautocaravaneando_ports.log"
     
     echo "=== PORT AUDITORIO ===" >> "$LOG_FILE"
     echo "Container: ${CONTENEDOR}" >> "$LOG_FILE"
@@ -24,9 +24,9 @@ jambload_ciber(){
 
 }
 
-jambscan(){
+jhlwscan(){
     while true; do
-        jambload_ciber
+        jhlwload_ciber
         sleep 30
     done
 }
@@ -34,7 +34,7 @@ jambscan(){
 main () {
     touch /root/logs/ctjhlwautocaravaneando_ports.log
     load_entrypoint_base
-    jambscan &
+    jhlwscan &
 }
 
 main

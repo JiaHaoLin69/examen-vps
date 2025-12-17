@@ -1,0 +1,22 @@
+services:
+  web:
+    build:
+      context: ${CONTEXTO}
+      dockerfile: ./dockerfiles/sweb/nginx/dockerfile
+    container_name: ${CONTENEDOR}
+    image: ${FIRMA}/nginx
+    ports:
+      - 80:80
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs:/root/logs
+    networks:
+      pnginx_network:
+        ipv4_address: ${IP_WEB}
+networks:
+  pnginx_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${SUBNET}

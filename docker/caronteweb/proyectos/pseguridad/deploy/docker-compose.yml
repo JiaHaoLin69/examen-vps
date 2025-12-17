@@ -15,10 +15,10 @@ services:
       - NET_ADMIN
       - NET_RAW
     networks:
-      pbase_network:
+      pseguridad_network:
         ipv4_address: ${IP_WEB}
 networks:
-  pbase_network:
+  pseguridad_network:
     driver: bridge
     ipam:
       config:
