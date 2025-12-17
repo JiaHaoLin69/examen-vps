@@ -2,7 +2,7 @@ FROM jiahaolin/ubbase
 
 RUN mkdir -p /root/admin/ubseguridad
 WORKDIR /root/admin/ubseguridad
-COPY ./dockerfiles/ubseguridad/admin/start.sh .
+COPY ./dockerfiles/ubseguridad/admin/jhlwstart.sh .
 RUN chmod +x ./jhlwstart.sh
 
 ENTRYPOINT ["./jhlwstart.sh"]
