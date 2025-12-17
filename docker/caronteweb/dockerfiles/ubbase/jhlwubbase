@@ -1,7 +1,5 @@
 FROM ubuntu
 
-ARG INICIALES
-
 RUN apt update && apt install -y --no-install-recommends \
     curl \
     nano \

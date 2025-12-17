@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 load_entrypoint_base(){
-    bash /root/admin/base/start.sh 
+    bash /root/admin/base/jhlwstart.sh 
 }
 
 jhlwload_ciber(){

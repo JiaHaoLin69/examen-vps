@@ -3,11 +3,11 @@
 load_entrypoint_seguridad() {
     echo "Ejecutando entrypoint seguridad..." >> /root/logs/informe_nginx.log
     
-    if [ -f /root/admin/ubseguridad/start.sh ]; then
-        bash /root/admin/ubseguridad/start.sh
+    if [ -f /root/admin/ubseguridad/jhlwstart.sh ]; then
+        bash /root/admin/ubseguridad/jhlwstart.sh
         echo "Entrypoint seguridad ejecutado" >> /root/logs/informe_nginx.log
     else
-        echo "ERROR: No se encontró /root/admin/ubseguridad/start.sh" >> /root/logs/informe_nginx.log
+        echo "ERROR: No se encontró /root/admin/ubseguridad/jhlwstart.sh" >> /root/logs/informe_nginx.log
     fi
 }
 
