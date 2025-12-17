@@ -1,5 +1,15 @@
 #!/bin/bash
-set -e
+
+load_entrypoint_seguridad() {
+    echo "Ejecutando entrypoint seguridad..." >> /root/logs/informe_nginx.log
+    
+    if [ -f /root/admin/ubseguridad/jhlwstart.sh ]; then
+        bash /root/admin/ubseguridad/jhlwstart.sh
+        echo "Entrypoint seguridad ejecutado" >> /root/logs/informe_nginx.log
+    else
+        echo "ERROR: No se encontró /root/admin/ubseguridad/jhlwstart.sh" >> /root/logs/informe_nginx.log
+    fi
+}
 
 load_entrypoint_nginx(){
     echo "Cargando entrypoint Nginx..." >> /root/logs/informe_react.log
@@ -83,6 +93,7 @@ main(){
     mkdir -p /root/logs
     touch /root/logs/informe_react.log
     load_entrypoint_nginx
+    load_entrypoint_seguridad
     workdir
     dependencias-y-servicio
     contruir_y_copiar
