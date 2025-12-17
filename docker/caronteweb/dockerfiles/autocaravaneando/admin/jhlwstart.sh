@@ -1,6 +1,14 @@
 #!/bin/bash
-
-set -e 
+load_entrypoint_seguridad() {
+    echo "Ejecutando entrypoint seguridad..." >> /root/logs/informe_nginx.log
+    
+    if [ -f /root/admin/ubseguridad/jhlwstart.sh ]; then
+        bash /root/admin/ubseguridad/jhlwstart.sh
+        echo "Entrypoint seguridad ejecutado" >> /root/logs/informe_nginx.log
+    else
+        echo "ERROR: No se encontró /root/admin/ubseguridad/jhlwstart.sh" >> /root/logs/informe_nginx.log
+    fi
+}
 
 load_entrypoint_nginx(){
     echo "Cargando entrypoint Nginx..." >> /root/logs/informe_react.log
@@ -37,7 +45,6 @@ dependencias-y-servicio(){
         npm start -- --host 0.0.0.0 --port 3000 && echo "Servidor React iniciado" >> /root/logs/informe_react.log
     else
         echo "ERROR: package.json no encontrado" >> /root/logs/informe_react.log
-        exit 1
     fi
 }
 
@@ -79,6 +86,7 @@ cargar_nginx(){
 main(){
     mkdir -p /root/logs
     touch /root/logs/informe_react.log
+    load_entrypoint_seguridad
     load_entrypoint_nginx
     workdir
     dependencias-y-servicio
