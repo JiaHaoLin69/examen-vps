@@ -57,8 +57,11 @@ cargar_nginx(){
     fi
     
     # Iniciar Nginx
-    nginx -g 'daemon off;'
-    echo "Nginx iniciado" >> /root/logs/informe_web.log
+    nginx 
+    echo "Nginx iniciado" >> /root/logs/informe_web.log 
+    # Iniciar el servidor de desarrollo de React
+    npm start
+    echo "Servidor de desarrollo iniciado" >> /root/logs/informe_web.log
 }
 
 main(){
