@@ -32,6 +32,7 @@ dependencias-y-servicio(){
     if [ -f package.json ]; then
         npm install && echo "Dependencias instaladas" >> /root/logs/informe_react.log
         npm audit fix && echo "Vulnerabilidades corregidas" >> /root/logs/informe_react.log
+        npm audit fix --force && echo "Vulnerabilidades graves corregidas" >> /root/logs/informe_react.log
         # Inciar el servidor de desarrollo de React
         npm run dev -- --host 0.0.0.0 --port 3000 && echo "Servidor React iniciado" >> /root/logs/informe_react.log
     else
