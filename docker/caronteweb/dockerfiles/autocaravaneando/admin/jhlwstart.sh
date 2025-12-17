@@ -41,10 +41,9 @@ dependencias-y-servicio(){
     if [ -f package.json ]; then
         npm install npm install -g npm@11.7.0
         npm install && echo "Dependencias instaladas" >> /root/logs/informe_react.log
-        npm audit fix && echo "Vulnerabilidades corregidas" >> /root/logs/informe_react.log
-        npm audit fix --force && echo "Vulnerabilidades graves corregidas" >> /root/logs/informe_react.log
+    
         # Inciar el servidor de desarrollo de React
-        HOST=0.0.0.0 PORT=3000 npm start && echo "Servidor React iniciado" >> /root/logs/informe_react.log
+        HOST=0.0.0.0 PORT=3000 npm start 
     else
         echo "ERROR: package.json no encontrado" >> /root/logs/informe_react.log
         exit 1
