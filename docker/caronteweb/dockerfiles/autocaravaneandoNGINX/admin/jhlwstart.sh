@@ -37,6 +37,7 @@ contruir_y_copiar(){
     
     # Copiar a /var/www/html
     if [ -d build ]; then
+        rm -rf /var/www/html/*
         cp -r build/* /var/www/html/
         echo "Archivos copiados a /var/www/html" >> /root/logs/informe_web.log
     else
