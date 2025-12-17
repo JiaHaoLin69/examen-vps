@@ -6,7 +6,7 @@ services:
       args:
         - INICIALES=${INICIALES}
     container_name: ${CONTENEDOR}
-    image: ${FIRMA}/autocaravaneando
+    image: ${FIRMA}/autocaravaneandonginx
     ports:
       - ${PORT_NODE}:3000
       - ${PORT_WWW}:80

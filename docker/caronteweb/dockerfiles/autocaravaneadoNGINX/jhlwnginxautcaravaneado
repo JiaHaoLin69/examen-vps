@@ -1,8 +1,8 @@
-FROM jiahaolin/reactautocaravaneando
+FROM jiahaolin/autocaravaneando
 
 RUN mkdir -p /root/admin/autocaravaneando
 WORKDIR /root/admin/autocaravaneando
-COPY ./dockerfiles/autocaravaneandonginx/admin/start.sh .
+COPY ./dockerfiles/autocaravaneandonginx/admin/jhlwstart.sh .
 RUN chmod +x ./jhlwstart.sh
 
 EXPOSE 3000 80
