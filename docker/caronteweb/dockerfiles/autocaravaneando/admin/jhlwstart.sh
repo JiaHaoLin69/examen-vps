@@ -6,7 +6,7 @@ load_entrypoint_nginx(){
     echo "Cargando entrypoint Nginx..." >> /root/logs/informe_react.log
     
     if [ -f /root/admin/sweb/nginx/jhlwstart.sh ]; then
-        bash /root/admin/nginx/jhlwstart.sh
+        bash /root/admin/sweb/nginx/jhlwstart.sh
         echo "Entrypoint Nginx ejecutado" >> /root/logs/informe_react.log
     else
         echo "ADVERTENCIA: start.sh de Nginx no encontrado" >> /root/logs/informe_react.log
