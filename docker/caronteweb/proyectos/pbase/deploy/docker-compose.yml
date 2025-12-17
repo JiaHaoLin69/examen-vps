@@ -1,0 +1,22 @@
+services:
+  web:
+    build:
+      context: ${CONTEXTO}
+      dockerfile: ./dockerfiles/ubbase/dockerfile
+    container_name: ${CONTENEDOR}
+    image: ${FIRMA}/ubbase
+    ports:
+      - 22:22
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs:/root/logs
+    networks:
+      pbase_network:
+        ipv4_address: ${IP_WEB}
+networks:
+  pbase_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${SUBNET}
