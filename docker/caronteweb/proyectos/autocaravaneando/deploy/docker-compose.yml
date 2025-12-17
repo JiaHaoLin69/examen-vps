@@ -2,7 +2,7 @@ services:
   web:
     build:
       context: ${CONTEXTO}
-      dockerfile: ./dockerfiles/autocaravaneando/${INICIALES}nginxautocaravaneando
+      dockerfile: ./dockerfiles/autocaravaneandoNGINX/${INICIALES}nginxautocaravaneando
       args:
         - INICIALES=${INICIALES}
     container_name: ${CONTENEDOR}
