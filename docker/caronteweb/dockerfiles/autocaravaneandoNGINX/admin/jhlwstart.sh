@@ -15,6 +15,7 @@ directorio_de_trabajo(){
 
 contruir_y_copiar(){
     
+    npm install
     # Construir proyecto
     if npm run build; then
         echo "Proyecto construido" >> /root/logs/informe_web.log
