@@ -8,7 +8,7 @@ services:
     container_name: ${CONTENEDOR}
     image: ${FIRMA}/reactautocaravaneando
     ports:
-      - ${PORT_NODE}:80
+      - ${PORT_NODE}:3000
       - ${PORT_WWW}:80
     env_file:
       - ./.env
