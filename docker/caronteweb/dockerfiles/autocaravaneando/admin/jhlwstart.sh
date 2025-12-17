@@ -45,17 +45,6 @@ dependencias-y-servicio(){
     fi
 }
 
-directorio_de_trabajo(){
-    echo "Cambiando directorio..." >> /root/logs/informe_react.log
-    
-    if cd /root/admin/node/proyectos/pokeapi; then
-        echo "Directorio cambiado a: $(pwd)" >> /root/logs/informe_react.log
-    else
-        echo "ERROR: No se pudo cambiar al directorio" >> /root/logs/informe_react.log
-        exit 1
-    fi
-}
-
 contruir_y_copiar(){
 
     
@@ -100,7 +89,6 @@ main(){
     load_entrypoint_nginx
     workdir
     dependencias-y-servicio
-    directorio_de_trabajo
     contruir_y_copiar
     cargar_nginx
 }
