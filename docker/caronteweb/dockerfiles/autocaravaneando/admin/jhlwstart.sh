@@ -82,6 +82,8 @@ main(){
     load_entrypoint_nginx
     workdir
     dependencias-y-servicio
+    construir_y_copiar
+    cargar_nginx
 }
 
 main
