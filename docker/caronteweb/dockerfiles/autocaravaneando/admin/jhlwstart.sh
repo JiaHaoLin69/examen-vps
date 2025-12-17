@@ -1,20 +1,15 @@
 #!/bin/bash
-load_entrypoint_seguridad() {
-    echo "Ejecutando entrypoint seguridad..." >> /root/logs/informe_nginx.log
-    
-    if [ -f /root/admin/ubseguridad/jhlwstart.sh ]; then
-        bash /root/admin/ubseguridad/jhlwstart.sh
-        echo "Entrypoint seguridad ejecutado" >> /root/logs/informe_nginx.log
-    else
-        echo "ERROR: No se encontró /root/admin/ubseguridad/jhlwstart.sh" >> /root/logs/informe_nginx.log
-    fi
-}
+
+set -e
+#!/bin/bash
+
+set -e 
 
 load_entrypoint_nginx(){
     echo "Cargando entrypoint Nginx..." >> /root/logs/informe_react.log
     
-    if [ -f /root/admin/sweb/nginx/jhlwstart.sh ]; then
-        bash /root/admin/sweb/nginx/jhlwstart.sh
+    if [ -f /root/admin/sweb/nginx/start.sh ]; then
+        bash /root/admin/sweb/nginx/start.sh
         echo "Entrypoint Nginx ejecutado" >> /root/logs/informe_react.log
     else
         echo "ADVERTENCIA: start.sh de Nginx no encontrado" >> /root/logs/informe_react.log
@@ -24,11 +19,11 @@ load_entrypoint_nginx(){
 workdir(){
     echo "Cambiando directorio..." >> /root/logs/informe_react.log
     
-    if [ -d /root/admin/node/proyectos/autocaravaneando ]; then
-        cd /root/admin/node/proyectos/autocaravaneando
+    if [ -d /root/admin/node/proyectos/pokeapi ]; then
+        cd /root/admin/node/proyectos/pokeapi
         echo "Directorio cambiado a: $(pwd)" >> /root/logs/informe_react.log
     else
-        echo "ERROR: Directorio /root/admin/node/proyectos/autocaravaneando no existe" >> /root/logs/informe_react.log
+        echo "ERROR: Directorio /root/admin/node/proyectos/pokeapi no existe" >> /root/logs/informe_react.log
         exit 1
     fi
 }
@@ -38,7 +33,7 @@ dependencias-y-servicio(){
     
     # Verificar si package.json existe
     if [ -f package.json ]; then
-        npm install -g npm@11.7.0 && echo "NPM actualizado a la versión 11.7.0" >> /root/logs/informe_react.log
+        npm install npm install -g npm@11.7.0
         npm install && echo "Dependencias instaladas" >> /root/logs/informe_react.log
         npm audit fix && echo "Vulnerabilidades corregidas" >> /root/logs/informe_react.log
         npm audit fix --force && echo "Vulnerabilidades graves corregidas" >> /root/logs/informe_react.log
@@ -46,10 +41,23 @@ dependencias-y-servicio(){
         npm start -- --host 0.0.0.0 --port 3000 && echo "Servidor React iniciado" >> /root/logs/informe_react.log
     else
         echo "ERROR: package.json no encontrado" >> /root/logs/informe_react.log
+        exit 1
+    fi
+}
+
+directorio_de_trabajo(){
+    echo "Cambiando directorio..." >> /root/logs/informe_react.log
+    
+    if cd /root/admin/node/proyectos/pokeapi; then
+        echo "Directorio cambiado a: $(pwd)" >> /root/logs/informe_react.log
+    else
+        echo "ERROR: No se pudo cambiar al directorio" >> /root/logs/informe_react.log
+        exit 1
     fi
 }
 
 contruir_y_copiar(){
+
     
     # Construir proyecto
     if npm run build; then
@@ -58,7 +66,7 @@ contruir_y_copiar(){
         echo "ERROR: Falló npm run build" >> /root/logs/informe_react.log
         exit 1
     fi
-
+    
     # Copiar a /var/www/html
     if [ -d dist ]; then
         cp -r dist/* /var/www/html/
@@ -71,6 +79,7 @@ contruir_y_copiar(){
 
 cargar_nginx(){
     echo "Configurando Nginx..." >> /root/logs/informe_react.log
+    
     # Verificar configuración de Nginx
     if nginx -t; then
         echo "Configuración Nginx OK" >> /root/logs/informe_react.log
@@ -84,15 +93,17 @@ cargar_nginx(){
     echo "Nginx iniciado" >> /root/logs/informe_react.log
 }
 
+
 main(){
     mkdir -p /root/logs
     touch /root/logs/informe_react.log
-    load_entrypoint_seguridad
     load_entrypoint_nginx
     workdir
     dependencias-y-servicio
+    directorio_de_trabajo
     contruir_y_copiar
     cargar_nginx
 }
+
 
 main
