@@ -1,0 +1,25 @@
+services:
+  web:
+    build:
+      context: ${CONTEXTO}
+      dockerfile: ./dockerfiles/ubserguridad/dockerfile
+    container_name: ${CONTENEDOR}
+    image: ${FIRMA}/ubseguridad
+    ports:
+      - 25:22
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs:/root/logs
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    networks:
+      pbase_network:
+        ipv4_address: ${IP_WEB}
+networks:
+  pbase_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${SUBNET}
