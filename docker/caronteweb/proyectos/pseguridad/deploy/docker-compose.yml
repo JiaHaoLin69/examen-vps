@@ -2,7 +2,7 @@ services:
   web:
     build:
       context: ${CONTEXTO}
-      dockerfile: ./dockerfiles/ubseguridad/dockerfile
+      dockerfile: ./dockerfiles/ubseguridad/${INICIALES}ubseguridad
       args:
         - INICIALES=${INICIALES}
     container_name: ${CONTENEDOR}
