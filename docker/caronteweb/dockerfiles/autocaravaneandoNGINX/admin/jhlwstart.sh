@@ -14,10 +14,9 @@ directorio_de_trabajo(){
 }
 
 contruir_y_copiar(){
-
     
     # Construir proyecto
-    if npm run build; then
+    if npm build; then
         echo "Proyecto construido" >> /root/logs/informe_web.log
     else
         echo "ERROR: Falló npm run build" >> /root/logs/informe_web.log
