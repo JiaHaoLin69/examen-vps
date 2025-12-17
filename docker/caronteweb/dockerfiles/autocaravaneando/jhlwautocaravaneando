@@ -6,9 +6,9 @@ RUN apt-get install -y nodejs
 RUN node --version && npm --version
 
 RUN mkdir -p /root/admin/node
-RUN mkdir -p /root/admin/node/proyectos/pokeapi
+RUN mkdir -p /root/admin/node/proyectos/autocaravaneando
 WORKDIR /root/admin/node
-COPY ./proyecto/practica_navyhookPOKEAPI/ /root/admin/node/proyectos/pokeapi
+COPY ./proyectos/autocaravaneando/src/www/ /root/admin/node/proyectos/autocaravaneando/
 
 COPY ./dockerfiles/node/admin/start.sh .
 RUN chmod +x /root/admin/node/start.sh
