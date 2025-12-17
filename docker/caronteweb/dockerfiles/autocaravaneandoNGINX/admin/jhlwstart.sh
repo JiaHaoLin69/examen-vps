@@ -25,11 +25,11 @@ contruir_y_copiar(){
     fi
     
     # Copiar a /var/www/html
-    if [ -d dist ]; then
-        cp -r dist/* /var/www/html/
+    if [ -d build ]; then
+        cp -r build/* /var/www/html/
         echo "Archivos copiados a /var/www/html" >> /root/logs/informe_web.log
     else
-        echo "ERROR: Directorio dist no encontrado" >> /root/logs/informe_web.log
+        echo "ERROR: Directorio build no encontrado" >> /root/logs/informe_web.log
         exit 1
     fi
 }

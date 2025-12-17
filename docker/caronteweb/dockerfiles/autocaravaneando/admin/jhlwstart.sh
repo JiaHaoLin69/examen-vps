@@ -39,9 +39,7 @@ dependencias-y-servicio(){
     
     # Verificar si package.json existe
     if [ -f package.json ]; then
-        npm install npm install -g npm@11.7.0
         npm install && echo "Dependencias instaladas" >> /root/logs/informe_react.log
-    
         # Inciar el servidor de desarrollo de React
         HOST=0.0.0.0 PORT=3000 npm start 
     else
