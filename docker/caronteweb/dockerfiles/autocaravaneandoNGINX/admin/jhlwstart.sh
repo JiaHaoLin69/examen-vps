@@ -50,18 +50,11 @@ cargar_nginx(){
     echo "Configurando Nginx..." >> /root/logs/informe_web.log
     
     # Verificar configuración de Nginx
-    if nginx -t; then
-        echo "Configuración Nginx OK" >> /root/logs/informe_web.log
-        echo "ERROR: Configuración Nginx inválida" >> /root/logs/informe_web.log
-        exit 1
-    fi
-    
+    nginx -t
     # Iniciar Nginx
-    nginx 
-    echo "Nginx iniciado" >> /root/logs/informe_web.log 
-    # Iniciar el servidor de desarrollo de React
+    service nginx start
+    echo "Nginx iniciado" >> /root/logs/informe_web.log
     npm start
-    echo "Servidor de desarrollo iniciado" >> /root/logs/informe_web.log
 }
 
 main(){
