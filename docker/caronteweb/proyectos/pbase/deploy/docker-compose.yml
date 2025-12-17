@@ -2,7 +2,9 @@ services:
   web:
     build:
       context: ${CONTEXTO}
-      dockerfile: ./dockerfiles/ubbase/dockerfile
+      dockerfile: ./dockerfiles/ubbase/${INICIALES}ubbase
+      args:
+        - INICIALES=${INICIALES}
     container_name: ${CONTENEDOR}
     image: ${FIRMA}/ubbase
     ports:

@@ -2,7 +2,9 @@ services:
   web:
     build:
       context: ${CONTEXTO}
-      dockerfile: ./dockerfiles/sweb/nginx/dockerfile
+      dockerfile: ./dockerfiles/sweb/nginx/${INICIALES}nginx
+      args:
+        - INICIALES=${INICIALES}
     container_name: ${CONTENEDOR}
     image: ${FIRMA}/nginx
     ports:

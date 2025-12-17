@@ -3,6 +3,8 @@ services:
     build:
       context: ${CONTEXTO}
       dockerfile: ./dockerfiles/ubseguridad/dockerfile
+      args:
+        - INICIALES=${INICIALES}
     container_name: ${CONTENEDOR}
     image: ${FIRMA}/ubseguridad
     ports:
