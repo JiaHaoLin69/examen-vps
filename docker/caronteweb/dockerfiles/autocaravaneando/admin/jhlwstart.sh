@@ -19,11 +19,11 @@ load_entrypoint_nginx(){
 workdir(){
     echo "Cambiando directorio..." >> /root/logs/informe_react.log
     
-    if [ -d /root/admin/node/proyectos/pokeapi ]; then
-        cd /root/admin/node/proyectos/pokeapi
+    if [ -d /root/admin/node/proyectos/autocaravaneando ]; then
+        cd /root/admin/node/proyectos/autocaravaneando
         echo "Directorio cambiado a: $(pwd)" >> /root/logs/informe_react.log
     else
-        echo "ERROR: Directorio /root/admin/node/proyectos/pokeapi no existe" >> /root/logs/informe_react.log
+        echo "ERROR: Directorio /root/admin/node/proyectos/autocaravaneando no existe" >> /root/logs/informe_react.log
         exit 1
     fi
 }
