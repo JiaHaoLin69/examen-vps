@@ -2,6 +2,17 @@
 
 set -e
 
+load_entrypoint_nginx(){
+    echo "Cargando entrypoint Nginx..." >> /root/logs/informe_web.log
+    
+    if [ -f /root/admin/sweb/nginx/start.sh ]; then
+        bash /root/admin/sweb/nginx/start.sh
+        echo "Entrypoint Nginx ejecutado" >> /root/logs/informe_web.log
+    else
+        echo "ADVERTENCIA: start.sh de Nginx no encontrado" >> /root/logs/informe_web.log
+    fi
+}
+
 directorio_de_trabajo(){
     echo "Cambiando directorio..." >> /root/logs/informe_web.log
 
@@ -52,6 +63,7 @@ cargar_nginx(){
 main(){
     mkdir -p /root/logs
     touch /root/logs/informe_web.log
+    load_entrypoint_nginx
     directorio_de_trabajo
     contruir_y_copiar
     cargar_nginx

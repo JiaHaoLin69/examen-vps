@@ -58,8 +58,6 @@ main(){
     load_entrypoint_seguridad
     workdir
     dependencias-y-servicio
-    contruir_y_copiar
-    cargar_nginx
 }
 
 
