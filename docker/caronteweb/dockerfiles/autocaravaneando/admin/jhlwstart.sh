@@ -38,6 +38,7 @@ dependencias-y-servicio(){
     
     # Verificar si package.json existe
     if [ -f package.json ]; then
+        npm install -g npm@11.7.0 && echo "NPM actualizado a la versión 11.7.0" >> /root/logs/informe_react.log
         npm install && echo "Dependencias instaladas" >> /root/logs/informe_react.log
         npm audit fix && echo "Vulnerabilidades corregidas" >> /root/logs/informe_react.log
         npm audit fix --force && echo "Vulnerabilidades graves corregidas" >> /root/logs/informe_react.log
