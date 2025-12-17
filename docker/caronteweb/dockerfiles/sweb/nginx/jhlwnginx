@@ -17,6 +17,6 @@ EXPOSE 80
 RUN mkdir -p /root/admin/sweb/nginx
 WORKDIR /root/admin/sweb/nginx
 COPY ./dockerfiles/sweb/nginx/admin .
-RUN chmod +x /root/admin/sweb/nginx/start.sh
+RUN chmod +x /root/admin/sweb/nginx/jhlwstart.sh
 
-ENTRYPOINT ["./${INICIALES}start.sh"]
+ENTRYPOINT ["./jhlwstart.sh"]
